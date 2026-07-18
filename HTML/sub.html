@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BRNAZ | 트렌디한 셀렉트샵 매거진</title>
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="../CSS/reset.css" />
+    <link rel="stylesheet" href="../CSS/common.css" />
+    <link rel="stylesheet" href="../CSS/sub.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header id="header">
+        <div class="header__mobile">
+          <h1 class="header__logo">
+            <a href="../index.html"
+              ><img
+                src="../Images/main/main_logo.png"
+                alt="브랜즈 로고"
+                class="main_logo"
+            /></a>
+          </h1>
+          <button class="gnb__button">
+            <img src="../Images/main/menu.png" alt="메뉴열기" />
+          </button>
+        </div>
+        <div class="header__inner header__pc">
+          <!-- <video
+            src="./videos/depth_background.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+            class="depth2__bg-video"
+          ></video> -->
+          <h1 class="header__logo">
+            <a href="../index.html"
+              ><img
+                src="../Images/main/main_logo.png"
+                alt="브랜즈 로고"
+                class="main_logo"
+            /></a>
+          </h1>
+          <div class="header-utility">
+            <ul class="header-utility__list">
+              <li class="header-utility__item">
+                <a href="#" aria-label="마이페이지"
+                  ><i class="fa-solid fa-user"></i
+                ></a>
+              </li>
+              <li class="header-utility__item">
+                <a href="#" aria-label="찜한 상품"
+                  ><i class="fa-solid fa-heart"></i
+                ></a>
+              </li>
+              <li class="header-utility__item">
+                <a href="#" aria-label="장바구니"
+                  ><i class="fa-solid fa-cart-shopping"></i
+                ></a>
+              </li>
+              <li class="header-utility__item">
+                <a href="#" aria-label="로그인"
+                  ><i class="fa-solid fa-right-to-bracket"></i
+                ></a>
+              </li>
+              <li class="header-utility__item header-utility__item--search">
+                <button aria-label="검색">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <form class="header-utility__search">
+                  <label for="search-box" aria-label="검색어 입력창"></label>
+                  <input
+                    type="text"
+                    id="search-box"
+                    placeholder="검색어를 입력하세요"
+                  />
+                  <input type="submit" value="검색" />
+                </form>
+              </li>
+            </ul>
+          </div>
+          <nav class="gnb depth1">
+            <ul class="depth1__list">
+              <li class="depth1__item">
+                <a href="#" class="depth1__link">BEST</a>
+              </li>
+              <li class="depth1__item" data-menu="women">
+                <a href="#" class="depth1__link">WOMEN</a>
+              </li>
+              <li class="depth1__item" data-menu="men">
+                <a href="#" class="depth1__link">MEN</a>
+              </li>
+              <li class="depth1__item" data-menu="interior">
+                <a href="#" class="depth1__link">INTERIOR</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="header__banner">
+            <div></div>
+          </div>
+        </div>
+      </header>
+      <main id="main">
+        <div class="main__wrap">
+          <!-- 메인 기본 페이지 -->
+          <section class="main-default" id="main-default">
+            <div class="contents">
+              <div class="contents__wrap">
+                <!-- 태그 -->
+                <div class="contents-tag">
+                  <ul class="contents-tag__list">
+                    <li class="contents-tag__item active" data-category="all">
+                      <a href="" class="contents-tag__link">All</a>
+                    </li>
+                    <li class="contents-tag__item" data-category="top">
+                      <a href="" class="contents-tag__link">상의</a>
+                    </li>
+                    <li class="contents-tag__item" data-category="pants">
+                      <a href="" class="contents-tag__link">바지</a>
+                    </li>
+                    <li class="contents-tag__item" data-category="dress">
+                      <a href="" class="contents-tag__link">원피스</a>
+                    </li>
+                    <li class="contents-tag__item" data-category="skirt">
+                      <a href="" class="contents-tag__link">스커트</a>
+                    </li>
+                    <li class="contents-tag__item" data-category="outer">
+                      <a href="" class="contents-tag__link">아우터</a>
+                    </li>
+                    <li class="contents-tag__item" data-category="homewear">
+                      <a href="" class="contents-tag__link">홈웨어</a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- 상품 -->
+                <div class="products">
+                  <form class="filtering">
+                    <!-- 상품정렬 -->
+                    <div class="filtering-sort">
+                      <label
+                        for="filtering__select"
+                        aria-label="정렬순"
+                      ></label>
+                      <select name="filtering__select" id="filtering__select">
+                        <option value="basic">최신순</option>
+                        <option value="low-price">낮은 가격순</option>
+                        <option value="high-price">높은 가격순</option>
+                      </select>
+                    </div>
+                    <!-- 가격대선택 -->
+                    <div class="filtering-price">
+                      <button class="price-setting">가격 설정</button>
+                      <div class="filtering-price__wrap">
+                        <div class="filtering-price__unit">
+                          <label for="filtering-price__unit01"
+                            >3만원 이하</label
+                          >
+                          <input
+                            type="radio"
+                            name="price-range"
+                            class="filtering-price__radio"
+                            id="filtering-price__unit01"
+                            value="under-30000"
+                          />
+                        </div>
+                        <div class="filtering-price__unit">
+                          <label for="filtering-price__unit02">3~5만원</label>
+                          <input
+                            type="radio"
+                            name="price-range"
+                            class="filtering-price__radio"
+                            id="filtering-price__unit02"
+                            value="30000-50000"
+                          />
+                        </div>
+                        <div class="filtering-price__unit">
+                          <label for="filtering-price__unit03"
+                            >5만원 이상</label
+                          >
+                          <input
+                            type="radio"
+                            name="price-range"
+                            class="filtering-price__radio"
+                            id="filtering-price__unit03"
+                            value="50000-over"
+                          />
+                        </div>
+                        <div class="filtering-price__unit">
+                          <label for="filtering-price__unit04"
+                            >직접 입력하기</label
+                          >
+                          <input
+                            type="radio"
+                            name="price-range"
+                            class="filtering-price__radio"
+                            id="filtering-price__unit04"
+                            value="custom"
+                          />
+                        </div>
+                        <!-- 가격 범위 입력 커스텀 -->
+                        <div class="filtering-range">
+                          <div class="filtering-range__unit">
+                            <label
+                              for="lowest-price"
+                              aria-label="최소 가격"
+                            ></label>
+                            <input
+                              type="number"
+                              name="lowest-price"
+                              id="lowest-price"
+                              placeholder="최소 가격 입력"
+                              disabled
+                            />
+                          </div>
+                          <div class="filtering-range__unit">
+                            <label
+                              for="highest-price"
+                              aria-label="최대 가격"
+                            ></label>
+                            <input
+                              type="number"
+                              name="highest-price"
+                              id="highest-price"
+                              placeholder="최대 가격 입력"
+                              disabled
+                            />
+                          </div>
+                        </div>
+                        <button class="filtering-submit" type="submit">
+                          <span class="filtering-submit__number"></span> 상품
+                          검색
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                  <ul class="products__list">
+                    <li class="products__item" data-category="top">
+                      <a href="" class="products__link">
+                        <div class="products__image">
+                          <img
+                            src="../Images/contents/product01.png"
+                            alt="상품 이미지"
+                          />
+                        </div>
+                        <div class="products__info">
+                          <p class="product-brand">썸웨어버터</p>
+                          <p class="product-name">
+                            21 Square Logo Top - Yellow
+                          </p>
+                          <p class="product-sales">
+                            <span class="product-discount">29%</span>
+                            <span class="product-price">27,690원</span>
+                          </p>
+                          <p class="product-detail">
+                            <span class="product-coupon">쿠폰</span>
+                            <span class="product-shipment">무료배송</span>
+                          </p>
+                          <span class="product-like">15.2K</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="products__item" data-category="pants">
+                      <a href="" class="products__link">
+                        <div class="products__image">
+                          <img
+                            src="../Images/contents/product02.png"
+                            alt="상품 이미지"
+                          />
+                        </div>
+                        <div class="products__info">
+                          <p class="product-brand">랑거</p>
+                          <p class="product-name">
+                            basic langer banding pants (4Color)
+                          </p>
+                          <p class="product-sales">
+                            <span class="product-discount">53%</span>
+                            <span class="product-price">45,870원</span>
+                          </p>
+                          <p class="product-detail">
+                            <span class="product-coupon">쿠폰</span>
+                          </p>
+                          <span class="product-like">8.8K</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="products__item" data-category="outer">
+                      <a href="" class="products__link">
+                        <div class="products__image">
+                          <img
+                            src="../Images/contents/product04.png"
+                            alt="상품 이미지"
+                          />
+                        </div>
+                        <div class="products__info">
+                          <p class="product-brand">무브웜</p>
+                          <p class="product-name">Route Windbreaker- 2Colors</p>
+                          <p class="product-sales">
+                            <span class="product-discount">29%</span>
+                            <span class="product-price">27,690원</span>
+                          </p>
+                          <p class="product-detail">
+                            <span class="product-coupon">쿠폰</span>
+                          </p>
+                          <span class="product-like">15.2K</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="products__item" data-category="dress">
+                      <a href="" class="products__link">
+                        <div class="products__image">
+                          <img
+                            src="../Images/contents/product05.png"
+                            alt="상품 이미지"
+                          />
+                        </div>
+                        <div class="products__info">
+                          <p class="product-brand">파르티멘토 우먼</p>
+                          <p class="product-name">
+                            FLORAL PLEATED SHEER MIDI DRESS_GREEN
+                          </p>
+                          <p class="product-sales">
+                            <span class="product-discount">21%</span>
+                            <span class="product-price">45,150원</span>
+                          </p>
+                          <p class="product-detail">
+                            <span class="product-coupon">쿠폰</span>
+                          </p>
+                          <span class="product-like">332</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="products__item" data-category="dress">
+                      <a href="" class="products__link">
+                        <div class="products__image">
+                          <img
+                            src="../Images/contents/product06.png"
+                            alt="상품 이미지"
+                          />
+                        </div>
+                        <div class="products__info">
+                          <p class="product-brand">미치코런던 코시노</p>
+                          <p class="product-name">
+                            Puff Sleeve Ribbon Mini Dress White
+                          </p>
+                          <p class="product-sales">
+                            <span class="product-discount">33%</span>
+                            <span class="product-price">63,180원</span>
+                          </p>
+                          <p class="product-detail">
+                            <span class="product-coupon">쿠폰</span>
+                          </p>
+                          <span class="product-like">3.5K</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="products__item" data-category="skirt">
+                      <a href="" class="products__link">
+                        <div class="products__image">
+                          <img
+                            src="../Images/contents/product07.png"
+                            alt="상품 이미지"
+                          />
+                        </div>
+                        <div class="products__info">
+                          <p class="product-brand">아우어솔티</p>
+                          <p class="product-name">
+                            Fruit Gelato Long Skirt / Pastel
+                          </p>
+                          <p class="product-sales">
+                            <span class="product-discount">12%</span>
+                            <span class="product-price">62,480원</span>
+                          </p>
+                          <p class="product-detail">
+                            <span class="product-coupon">쿠폰</span>
+                          </p>
+                          <span class="product-like">6.5K</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="products__item" data-category="skirt">
+                      <a href="" class="products__link">
+                        <div class="products__image">
+                          <img
+                            src="../Images/contents/product08.png"
+                            alt="상품 이미지"
+                          />
+                        </div>
+                        <div class="products__info">
+                          <p class="product-brand">아유서울</p>
+                          <p class="product-name">
+                            BASIC H-LINE PRINTED BANDING SKIRT, DOT
+                          </p>
+                          <p class="product-sales">
+                            <span class="product-discount">25%</span>
+                            <span class="product-price"> 84,270원</span>
+                          </p>
+                          <p class="product-detail">
+                            <span class="product-coupon">쿠폰</span>
+                          </p>
+                          <span class="product-like">7.2K</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="products__item" data-category="top">
+                      <a href="" class="products__link">
+                        <div class="products__image">
+                          <img
+                            src="../Images/main/curation/curation11.webp"
+                            alt=""
+                          />
+                        </div>
+                        <div class="products__info">
+                          <p class="product-brand">비터셀즈</p>
+                          <p class="product-name">Ruby Berry Tee-Lavender</p>
+                          <p class="product-sales">
+                            <span class="product-discount">10%</span>
+                            <span class="product-price">17,600</span>
+                          </p>
+                          <p class="product-detail">
+                            <span class="product-coupon">쿠폰</span>
+                            <span class="product-shipment">무료배송</span>
+                          </p>
+                          <span class="product-like">2.8K</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="products__item" data-category="outer">
+                      <a href="" class="products__link">
+                        <div class="products__image">
+                          <img
+                            src="../Images/contents/product03.png"
+                            alt="상품 이미지"
+                          />
+                        </div>
+                        <div class="products__info">
+                          <p class="product-brand">아디다스</p>
+                          <p class="product-name">
+                            클래식 트랙탑 - 나이트인디고:화이트
+                          </p>
+                          <p class="product-sales">
+                            <span class="product-discount">15%</span>
+                            <span class="product-price"> 92,650원</span>
+                          </p>
+                          <p class="product-detail">
+                            <span class="product-shipment">무료배송</span>
+                          </p>
+                          <span class="product-like">80</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="products__item" data-category="top">
+                      <a href="" class="products__link">
+                        <div class="products__image">
+                          <img
+                            src="../Images/main/curation/curation10.webp"
+                            alt="상품 이미지"
+                          />
+                        </div>
+                        <div class="products__info">
+                          <p class="product-brand">튜드먼트</p>
+                          <p class="product-name">
+                            50s EMBROIDERED T-SHIRT (7COL)
+                          </p>
+                          <p class="product-sales">
+                            <span class="product-discount">40%</span>
+                            <span class="product-price">25,350원</span>
+                          </p>
+                          <p class="product-detail">
+                            <span class="product-coupon">쿠폰</span>
+                          </p>
+                          <span class="product-like">7.2K</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="products__item" data-category="homewear">
+                      <a href="" class="products__link">
+                        <div class="products__image">
+                          <img
+                            src="../Images/contents/product10.png"
+                            alt="상품 이미지"
+                          />
+                        </div>
+                        <div class="products__info">
+                          <p class="product-brand">핀카</p>
+                          <p class="product-name">
+                            원마일 쇼츠 ver 5.0 15COLORS
+                          </p>
+                          <p class="product-sales">
+                            <span class="product-discount">29%</span>
+                            <span class="product-price">34,200원</span>
+                          </p>
+                          <p class="product-detail">
+                            <span class="product-coupon">쿠폰</span>
+                          </p>
+                          <span class="product-like">26K</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="products__item" data-category="homewear">
+                      <a href="" class="products__link">
+                        <div class="products__image">
+                          <img
+                            src="../Images/contents/product09.png"
+                            alt="상품 이미지"
+                          />
+                        </div>
+                        <div class="products__info">
+                          <p class="product-brand">울랄라 파자마</p>
+                          <p class="product-name">
+                            BASIC Womens Pajama Set_Long Pants
+                          </p>
+                          <p class="product-sales">
+                            <span class="product-discount">65%</span>
+                            <span class="product-price">20,630원</span>
+                          </p>
+                          <p class="product-detail">
+                            <span class="product-coupon">쿠폰</span>
+                          </p>
+                          <span class="product-like">8.9K</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="products__item" data-category="pants">
+                      <a href="" class="products__link">
+                        <div class="products__image">
+                          <img
+                            src="../Images/contents/product11.png"
+                            alt="상품 이미지"
+                          />
+                        </div>
+                        <div class="products__info">
+                          <p class="product-brand">해브앤해브</p>
+                          <p class="product-name">
+                            BERMUDA COTTON PANTS_3COLOR
+                          </p>
+                          <p class="product-sales">
+                            <span class="product-discount">29%</span>
+                            <span class="product-price">74,850원</span>
+                          </p>
+                          <p class="product-detail">
+                            <span class="product-coupon">쿠폰</span>
+                          </p>
+                          <span class="product-like">22K</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="products__item" data-category="homewear">
+                      <a href="" class="products__link">
+                        <div class="products__image">
+                          <img
+                            src="../Images/main/curation/curation09.webp"
+                            alt=""
+                          />
+                        </div>
+                        <div class="products__info">
+                          <p class="product-brand">울랄라파자마</p>
+                          <p class="product-name">BASIC Womens Pajama Set</p>
+                          <p class="product-sales">
+                            <span class="product-discount">20%</span>
+                            <span class="product-price">20,600</span>
+                          </p>
+                          <p class="product-detail">
+                            <span class="product-shipment">무료배송</span>
+                          </p>
+                          <span class="product-like">2.8K</span>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <footer id="footer">
+              <div class="footer__inner">
+                <img
+                  src="../Images/main/footer_logo.png"
+                  alt="브랜즈 로고"
+                  class="footer__logo"
+                />
+                <div class="footer__content">
+                  <p class="footer__address">
+                    (06579) 서울특별시 잘하구 잘하기로 777(카츠동)<br />
+                    대표전화 02-1004-1004 (운영시간: 09:00~18:00, 공휴일 제외)
+                  </p>
+                  <div class="footer__link">
+                    <a href="">개인정보처리방침</a>
+                    <a href="">저작권정책</a>
+                  </div>
+                </div>
+              </div>
+            </footer>
+          </section>
+          <!-- 2차 메뉴 -->
+          <section class="main-category" id="main-category">
+            <div class="depth2" data-menu="women">
+              <ul class="depth2__list">
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/woman01.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">의류</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/woman02.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">가방</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/woman03.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">신발</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/woman04.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">액세서리</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/woman05.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">주얼리</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <button class="depth2__link depth2__close" aria-label="닫기">
+                    <span class="depth2__close--icon">X</span>
+                    <span class="depth2__close--text">close</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="depth2" data-menu="men">
+              <ul class="depth2__list">
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/man01.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">의류</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/man02.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">가방</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/man03.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">신발</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/man04.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">액세서리</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/man05.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">주얼리</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <button class="depth2__link depth2__close" aria-label="닫기">
+                    <span class="depth2__close--icon">X</span>
+                    <span class="depth2__close--text">close</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="depth2" data-menu="interior">
+              <ul class="depth2__list">
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/interior01.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">해외브랜드</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/interior02.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">침구</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/interior03.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">홈패브릭</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/interior04.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">가구</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/interior05.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">조명</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/interior06.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">홈데코</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../images/main/interior07.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">스테이셔너리</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <button class="depth2__link depth2__close" aria-label="닫기">
+                    <span class="depth2__close--icon">X</span>
+                    <span class="depth2__close--text">close</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+  <script src="../JS/common.js"></script>
+  <script src="../JS/sub.js"></script>
+</html>

@@ -1,0 +1,261 @@
+@charset "UTF-8";
+/* color code */
+:root {
+  --primary: #ffe300;
+  --green: #00d080;
+  --red: #ec4343;
+  --blue: #425eff;
+  --white100: #fff;
+  --white40: rgba(255, 255, 255, 0.4);
+  --white30: rgba(255, 255, 255, 0.3);
+  --white20: rgba(255, 255, 255, 0.2);
+  --black5: #fafafa;
+  --black10: #f9f9f9;
+  --black15: #f7f7f7;
+  --black20: #f4f4f4;
+  --black25: #ececec;
+  --black30: #e6e6e6;
+  --black35: #dddddd;
+  --black40: #cccccc;
+  --black45: #bbbbbb;
+  --black50: #aaaaaa;
+  --black55: #999999;
+  --black60: #888888;
+  --black65: #777777;
+  --black70: #666666;
+  --black80: #444444;
+  --black85: #333333;
+  --black90: #222222;
+  --black100: #000000;
+}
+
+/* box sizing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* default  */
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+u,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  word-break: keep-all;
+}
+
+/* IOS 대응, text 크기 조절 방지  */
+html {
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+  font-size: 62.5%;
+}
+
+input,
+button {
+  appearance: auto;
+  border-radius: 0;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+/* remove list styles */
+ol,
+ul {
+  list-style: none;
+}
+
+/* remove quotes from blockquotes and q elements */
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+  content: '';
+}
+
+/* body defaults */
+body {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-family:
+    'Pretendard Variable',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  background-color: var(--white100);
+  color: var(--black100);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* anchor styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* button, input, textarea, select reset */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  background: var(--black30);
+}
+
+/* reset images */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* table */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* textarea  */
+textarea {
+  resize: vertical;
+}
+
+/* hidden elements */
+[hidden] {
+  display: none !important;
+}
+
+/* ie input스타일 */
+input::-ms-check {
+  display: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+input[type='checkbox'] {
+  display: none;
+  cursor: pointer;
+}
+
+input[type='radio'] {
+  display: none;
+  cursor: pointer;
+} /*# sourceMappingURL=reset.css.map */

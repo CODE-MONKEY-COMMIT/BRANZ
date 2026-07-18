@@ -1,0 +1,1118 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BRNAZ | 트렌디한 셀렉트샵 매거진</title>
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="./CSS/reset.css" />
+    <link rel="stylesheet" href="./CSS/common.css" />
+    <link rel="stylesheet" href="./CSS/main.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header id="header">
+        <div class="header__mobile">
+          <h1 class="header__logo">
+            <a href="#"
+              ><img
+                src="./Images/main/main_logo.png"
+                alt="브랜즈 로고"
+                class="main_logo"
+            /></a>
+          </h1>
+          <button class="gnb__button">
+            <img src="./Images/main/menu.png" alt="메뉴열기" />
+          </button>
+        </div>
+        <div class="header__inner header__pc">
+          <!-- <video
+            src="./videos/depth_background.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+            class="depth2__bg-video"
+          ></video> -->
+          <h1 class="header__logo">
+            <a href="#"
+              ><img
+                src="./Images/main/main_logo.png"
+                alt="브랜즈 로고"
+                class="main_logo"
+            /></a>
+          </h1>
+          <div class="header-utility">
+            <ul class="header-utility__list">
+              <li class="header-utility__item">
+                <a href="#" aria-label="마이페이지"
+                  ><i class="fa-solid fa-user"></i
+                ></a>
+              </li>
+              <li class="header-utility__item">
+                <a href="#" aria-label="찜한 상품"
+                  ><i class="fa-solid fa-heart"></i
+                ></a>
+              </li>
+              <li class="header-utility__item">
+                <a href="#" aria-label="장바구니"
+                  ><i class="fa-solid fa-cart-shopping"></i
+                ></a>
+              </li>
+              <li class="header-utility__item">
+                <a href="#" aria-label="로그인"
+                  ><i class="fa-solid fa-right-to-bracket"></i
+                ></a>
+              </li>
+              <li class="header-utility__item header-utility__item--search">
+                <button aria-label="검색">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <form class="header-utility__search">
+                  <label for="search-box" aria-label="검색어 입력창"></label>
+                  <input
+                    type="text"
+                    id="search-box"
+                    placeholder="검색어를 입력하세요"
+                  />
+                  <input type="submit" value="검색" />
+                </form>
+              </li>
+            </ul>
+          </div>
+          <nav class="gnb depth1">
+            <ul class="depth1__list">
+              <li class="depth1__item">
+                <a href="#" class="depth1__link">BEST</a>
+              </li>
+              <li class="depth1__item" data-menu="women">
+                <a href="#" class="depth1__link">WOMEN</a>
+              </li>
+              <li class="depth1__item" data-menu="men">
+                <a href="#" class="depth1__link">MEN</a>
+              </li>
+              <li class="depth1__item" data-menu="interior">
+                <a href="#" class="depth1__link">INTERIOR</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="header__banner">
+            <div></div>
+          </div>
+        </div>
+      </header>
+      <main id="main">
+        <div class="main__wrap">
+          <!-- 메인 기본 페이지 -->
+          <section class="main-default" id="main-default">
+            <!-- 최상위배너 -->
+            <div class="banner swiper">
+              <ul class="banner__list swiper-wrapper">
+                <li class="banner__item swiper-slide">
+                  <a href="" class="banner__link">
+                    <div class="banner__image">
+                      <img
+                        src="./Images/main/main_banner01.png"
+                        alt="배너이미지 1"
+                      />
+                    </div>
+                    <div class="banner__text">7월 신진 브랜드 추천</div>
+                  </a>
+                </li>
+                <li class="banner__item swiper-slide">
+                  <a href="" class="banner__link">
+                    <div class="banner__image">
+                      <img
+                        src="./Images/main/main_banner02.png"
+                        alt="배너이미지 2"
+                      />
+                    </div>
+                    <div class="banner__text">반항적인 무드를 원해</div>
+                  </a>
+                </li>
+                <li class="banner__item swiper-slide">
+                  <a href="" class="banner__link">
+                    <div class="banner__image">
+                      <img
+                        src="./Images/main/main_banner03.png"
+                        alt="배너이미지 3"
+                      />
+                    </div>
+                    <div class="banner__text">미니멀리즘의 정수를 만나다</div>
+                  </a>
+                </li>
+              </ul>
+              <div class="banner_buttons">
+                <div
+                  class="banner_button banner_button--prev"
+                  aria-label="이전보기"
+                >
+                  <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div
+                  class="banner_button banner_button--next"
+                  aria-label="다음보기"
+                >
+                  <i class="fa-solid fa-chevron-right"></i>
+                </div>
+              </div>
+              <div class="banner_scrollbar"></div>
+            </div>
+            <!-- 큐레이션 메인 -->
+            <div class="curation">
+              <ul class="curation__list">
+                <li class="curation__item">
+                  <div class="curation__summary">
+                    <div class="curation__title-box">
+                      <p class="curation__title">이번 주 인기 아이템</p>
+                      <p class="curation__subtext">
+                        실패 없는 스타일로 산뜻한 주말을
+                      </p>
+                    </div>
+                    <div class="curation__image">
+                      <img
+                        src="./Images/main/curation/curation08.webp"
+                        alt="큐레이션 섬네일 이미지"
+                      />
+                    </div>
+                  </div>
+                  <div class="curation__product swiper">
+                    <ul class="curation__product-list swiper-wrapper">
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation08.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">
+                              코모레비뮤지엄
+                            </p>
+                            <p class="curation__product-name">
+                              JELLY PLANET_4Colors 라티스 젤리 밴딩 플랫 l J01
+                            </p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >40%</span
+                              >
+                              <span class="curation__product-price"
+                                >43,400</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation09.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">울랄라파자마</p>
+                            <p class="curation__product-name">
+                              BASIC Womens Pajama Set_Long Pants
+                            </p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >20%</span
+                              >
+                              <span class="curation__product-price"
+                                >20,600</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation10.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">튜드먼트</p>
+                            <p class="curation__product-name">
+                              50s EMBROIDERED T-SHIRT (7COL)
+                            </p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >40%</span
+                              >
+                              <span class="curation__product-price"
+                                >25,000</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation11.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">비터셀즈</p>
+                            <p class="curation__product-name">
+                              Ruby Berry Tee-Lavender
+                            </p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >10%</span
+                              >
+                              <span class="curation__product-price"
+                                >17,600</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation12.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">브랜든</p>
+                            <p class="curation__product-name">
+                              세이프 데이즈 숄더백 (애쉬 그레이)
+                            </p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >20%</span
+                              >
+                              <span class="curation__product-price"
+                                >59,800</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation13.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">
+                              누아트스튜디오
+                            </p>
+                            <p class="curation__product-name">
+                              천연고무 클래식 미드 숏 레인부츠 _4color
+                            </p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >87%</span
+                              >
+                              <span class="curation__product-price"
+                                >27,600</span
+                              >
+                            </p>
+                            <p class="curation__product-detail"></p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation14.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">트위</p>
+                            <p class="curation__product-name">
+                              폴틴 시스루 긴팔 가디건
+                            </p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >37%</span
+                              >
+                              <span class="curation__product-price"
+                                >18,300</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- <button
+                      class="curation_arrow curation_arrow--prev"
+                      aria-label="이전보기"
+                    >
+                      <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button
+                      class="curation_arrow curation_arrow--next"
+                      aria-label="다음보기"
+                    >
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </button> -->
+                  </div>
+                </li>
+                <li class="curation__item">
+                  <div class="curation__summary">
+                    <div class="curation__title-box">
+                      <p class="curation__title">기분 좋은 발걸음</p>
+                      <p class="curation__subtext">
+                        킨치와 제뉴인그립의 합작 브랜드 '온루'
+                      </p>
+                    </div>
+                    <div class="curation__image">
+                      <img
+                        src="./Images/main/curation/curation15.webp"
+                        alt="큐레이션 섬네일 이미지"
+                      />
+                    </div>
+                  </div>
+                  <div class="curation__product swiper">
+                    <ul class="curation__product-list swiper-wrapper">
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation15.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">온루</p>
+                            <p class="curation__product-name">
+                              [ONRU x kinchi] RUGA
+                            </p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >15%</span
+                              >
+                              <span class="curation__product-price"
+                                >120,480</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation16.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">온루</p>
+                            <p class="curation__product-name">HORSE-ROUNDER</p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >33%</span
+                              >
+                              <span class="curation__product-price"
+                                >152,250</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation17.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">온루</p>
+                            <p class="curation__product-name">
+                              BRAUM - 038 (a)
+                            </p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >30%</span
+                              >
+                              <span class="curation__product-price"
+                                >107,700</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation18.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">온루</p>
+                            <p class="curation__product-name">LITE-808</p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >22%</span
+                              >
+                              <span class="curation__product-price"
+                                >156,600</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation19.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">온루</p>
+                            <p class="curation__product-name">OVER DEPT</p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >35%</span
+                              >
+                              <span class="curation__product-price"
+                                >120,800</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation20.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">온루</p>
+                            <p class="curation__product-name">SCALED LOAFER</p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >36%</span
+                              >
+                              <span class="curation__product-price"
+                                >120,460</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation21.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">온루</p>
+                            <p class="curation__product-name">CAPT</p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >25%</span
+                              >
+                              <span class="curation__product-price"
+                                >114,000</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- <button
+                      class="curation_arrow curation_arrow--prev"
+                      aria-label="이전보기"
+                    >
+                      <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button
+                      class="curation_arrow curation_arrow--next"
+                      aria-label="다음보기"
+                    >
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </button> -->
+                  </div>
+                </li>
+                <li class="curation__item">
+                  <div class="curation__summary">
+                    <div class="curation__title-box">
+                      <p class="curation__title">여름 식탁의 새로운 시작</p>
+                      <p class="curation__subtext">여름 키친웨어 컬렉션</p>
+                    </div>
+                    <div class="curation__image">
+                      <img
+                        src="./Images/main/curation/curation01.webp"
+                        alt="큐레이션 섬네일 이미지"
+                      />
+                    </div>
+                  </div>
+                  <div class="curation__product swiper">
+                    <ul class="curation__product-list swiper-wrapper">
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation01.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">소로이샵</p>
+                            <p class="curation__product-name">
+                              여주 소복 줄무늬 타원접시 앞접시 16cm_3color
+                            </p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >15%</span
+                              >
+                              <span class="curation__product-price">7,800</span>
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation02.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">소로이샵</p>
+                            <p class="curation__product-name">
+                              소바 테이블웨어 나눔접시 2type_3color (2칸, 3칸)
+                            </p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >25%</span
+                              >
+                              <span class="curation__product-price"
+                                >24,000</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation03.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">소로이샵</p>
+                            <p class="curation__product-name">
+                              우디 블랙 타원 테이블매트
+                            </p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >25%</span
+                              >
+                              <span class="curation__product-price"
+                                >20,000</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation04.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">소로이샵</p>
+                            <p class="curation__product-name">
+                              재팬 옐로 원형 3구 나눔접시 24cm 다이어트 식판
+                            </p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >10%</span
+                              >
+                              <span class="curation__product-price"
+                                >17,600</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation06.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">소로이샵</p>
+                            <p class="curation__product-name">
+                              시로카이라기 플레이트 3size (찬기, 파스타접시)
+                            </p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >25%</span
+                              >
+                              <span class="curation__product-price">3,800</span>
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation05.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">소로이샵</p>
+                            <p class="curation__product-name">
+                              오트밀 나눔접시 3type
+                            </p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >25%</span
+                              >
+                              <span class="curation__product-price"
+                                >24,000</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                      <li class="curation__product-item swiper-slide">
+                        <a href="" class="curation__product-link">
+                          <div class="curation__product-image">
+                            <img
+                              src="./Images/main/curation/curation07.webp"
+                              alt=""
+                            />
+                          </div>
+                          <div class="curation__product-info">
+                            <p class="curation__product-brand">소로이샵</p>
+                            <p class="curation__product-name">
+                              시로 카이라기 소면기 17cm
+                            </p>
+                            <p class="curation__product-sales">
+                              <span class="curation__product-discount"
+                                >25%</span
+                              >
+                              <span class="curation__product-price"
+                                >12,000</span
+                              >
+                            </p>
+                            <p class="curation__product-detail">
+                              <span class="curation__product-coupon">쿠폰</span>
+                              <span class="curation__product-shipment"
+                                >무료배송</span
+                              >
+                            </p>
+                            <span class="curation__product-like">2,841</span>
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                    <!-- <button
+                      class="curation_arrow curation_arrow--prev"
+                      aria-label="이전보기"
+                    >
+                      <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button
+                      class="curation_arrow curation_arrow--next"
+                      aria-label="다음보기"
+                    >
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </button> -->
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- 미니배너 -->
+            <div class="mini-banner">
+              <div class="mini-banner__unit">
+                <a href="" class="mini-banner__link">
+                  <div class="mini-banner__image">
+                    <img src="./Images/main/banner03.jpg" alt="배너 이미지" />
+                  </div>
+                  <div class="mini-banner__text">
+                    살로몬이라면 러닝도 가뿐해
+                  </div>
+                </a>
+              </div>
+              <div class="mini-banner__unit">
+                <a href="" class="mini-banner__link">
+                  <div class="mini-banner__image">
+                    <img src="./Images/main/banner04.jpg" alt="배너 이미지" />
+                  </div>
+                  <div class="mini-banner__text">무채색이 지닌 옷의 힘</div>
+                </a>
+              </div>
+            </div>
+            <footer id="footer">
+              <div class="footer__inner">
+                <img
+                  src="./Images/main/footer_logo.png"
+                  alt="브랜즈 로고"
+                  class="footer__logo"
+                />
+                <div class="footer__content">
+                  <p class="footer__address">
+                    (06579) 서울특별시 잘하구 잘하기로 777(카츠동)<br />
+                    대표전화 02-1004-1004 (운영시간: 09:00~18:00, 공휴일 제외)
+                  </p>
+                  <div class="footer__link">
+                    <a href="">개인정보처리방침</a>
+                    <a href="">저작권정책</a>
+                  </div>
+                </div>
+              </div>
+            </footer>
+          </section>
+          <!-- 2차 메뉴 -->
+          <section class="main-category" id="main-category">
+            <div class="depth2" data-menu="women">
+              <ul class="depth2__list">
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/woman01.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">의류</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/woman02.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">가방</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/woman03.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">신발</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/woman04.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">액세서리</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/woman05.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">주얼리</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <button class="depth2__link depth2__close" aria-label="닫기">
+                    <span class="depth2__close--icon">X</span>
+                    <span class="depth2__close--text">close</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="depth2" data-menu="men">
+              <ul class="depth2__list">
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/man01.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">의류</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/man02.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">가방</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/man03.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">신발</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/man04.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">액세서리</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/man05.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">주얼리</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <button class="depth2__link depth2__close" aria-label="닫기">
+                    <span class="depth2__close--icon">X</span>
+                    <span class="depth2__close--text">close</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="depth2" data-menu="interior">
+              <ul class="depth2__list">
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/interior01.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">해외브랜드</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/interior02.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">침구</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/interior03.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">홈패브릭</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/interior04.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">가구</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/interior05.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">조명</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/interior06.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">홈데코</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="./images/main/interior07.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">스테이셔너리</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <button class="depth2__link depth2__close" aria-label="닫기">
+                    <span class="depth2__close--icon">X</span>
+                    <span class="depth2__close--text">close</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+  <script src="./JS/common.js"></script>
+  <script src="./JS/main.js"></script>
+</html>

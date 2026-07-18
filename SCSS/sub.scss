@@ -1,0 +1,279 @@
+// 믹스인
+@mixin flexvertical() {
+  display: flex;
+  align-items: center;
+}
+@mixin flexhorizontal() {
+  display: flex;
+  justify-content: center;
+}
+@mixin flexcenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flexbetween() {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@mixin responsive($breakpoint) {
+  @if $breakpoint == mobile {
+    @media screen and (max-width: 640px) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media screen and (max-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == pc {
+    @media screen and (max-width: 1200px) {
+      @content;
+    }
+  }
+}
+// 공통변수
+$commonBlack: #181818;
+$commonGray: #9e9e9e;
+$commonWhite: #f8f8f8;
+
+.contents {
+  .contents__wrap {
+    .contents-tag {
+      padding: 50px 30px 10px;
+      @include responsive(tablet) {
+        padding: 30px 30px 0;
+      }
+      .contents-tag__list {
+        @include flexvertical();
+        flex-wrap: wrap;
+        gap: 15px;
+        @include responsive(mobile) {
+          gap: 8px;
+        }
+        .contents-tag__item {
+          border: 1px solid $commonBlack;
+          border-radius: 30px;
+          overflow: hidden;
+          transition: all 0.3s ease-out;
+          &:hover,
+          &.active {
+            background-color: $commonBlack;
+            color: $commonWhite;
+          }
+          .contents-tag__link {
+            display: block;
+            padding: 5px 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.products {
+  padding: 30px 10px 30px 30px;
+  .products__list {
+    position: relative;
+    width: 100%;
+    .products__item {
+      display: none;
+      position: absolute;
+      width: calc(33.33% - 20px);
+      @include responsive(mobile) {
+        width: calc(50% - 20px);
+      }
+      &.active {
+        display: block;
+      }
+      &.is-hidden {
+        display: none;
+      }
+      .products__link {
+        width: 100%;
+        .products__image {
+          width: 100%;
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+        .products__info {
+          position: relative;
+          margin-top: 5px;
+          .product-brand {
+            font-size: 1.1rem;
+            color: #898989;
+            @include responsive(tablet) {
+              font-size: 1rem;
+            }
+          }
+          .product-name {
+            width: 100%;
+            margin: 3px 0 2px;
+            font-size: 1.4rem;
+            font-weight: 500;
+            line-height: 1.3rem;
+            @include responsive(tablet) {
+              font-size: 1.2rem;
+            }
+          }
+          .product-sales {
+            font-size: 1.4rem;
+            font-weight: 600;
+            @include responsive(tablet) {
+              font-size: 1.2rem;
+            }
+            .product-discount {
+              color: #ff5500;
+            }
+          }
+          .product-detail {
+            span {
+              background-color: #ebebeb;
+              font-size: 1rem;
+              padding: 1px;
+              border-radius: 2px;
+              @include responsive(tablet) {
+                font-size: 0.9rem;
+              }
+            }
+          }
+          .product-like {
+            @include flexvertical();
+            position: absolute;
+            top: 1px;
+            right: 0;
+            font-size: 1.1rem;
+            color: #a9a9a9;
+            &:before {
+              content: '\f004';
+              margin-right: 5px;
+              font-family: 'Font Awesome 5 Free';
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.filtering {
+  @include flexvertical();
+  gap: 30px;
+  margin: 0 40px 35px 20px;
+  border-bottom: 1px solid #d7d7d7;
+  @include responsive(tablet) {
+    margin: 0 20px 25px 0;
+  }
+  .filtering-sort {
+    display: inline-block;
+    position: relative;
+    &:after {
+      content: '\f107';
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: 'Font Awesome 5 Free';
+    }
+    label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      background: transparent;
+    }
+    select {
+      width: 120px;
+      padding: 5px 20px 5px 10px;
+    }
+  }
+  .filtering-price {
+    position: relative;
+    .price-setting {
+      position: relative;
+      width: 120px;
+      padding: 5px 20px 5px 10px;
+      text-align: left;
+      &:after {
+        content: '\f107';
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        transform: translateY(-50%);
+        font-size: 1rem;
+        font-weight: 600;
+        font-family: 'Font Awesome 5 Free';
+      }
+    }
+    .filtering-price__wrap {
+      display: none;
+      position: absolute;
+      top: 35px;
+      left: 0;
+      padding: 15px;
+      border: 1px solid #d7d7d7;
+      background: #ffffff;
+      z-index: 10;
+      font-size: 1.4rem;
+      @include responsive(tablet) {
+        left: auto;
+        right: 0;
+      }
+      &.active {
+        display: block;
+      }
+      .filtering-price__unit {
+        position: relative;
+        padding: 5px 5px 5px 38px;
+        input[type='radio'] {
+          display: inline-block;
+          position: absolute;
+          top: 50%;
+          left: 10px;
+          width: 15px;
+          height: 15px;
+          transform: translateY(-50%);
+          border: 5px solid #e5e5e5;
+          border-radius: 50%;
+          &:checked {
+            border-color: $commonGray;
+          }
+        }
+      }
+      .filtering-range {
+        position: relative;
+        margin-top: 5px;
+        .filtering-range__unit {
+          margin-bottom: 5px;
+          label {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            color: transparent;
+          }
+          input {
+            padding: 3px;
+            border: 1px solid $commonGray;
+            &:disabled {
+              background-color: #bdbdbd;
+            }
+          }
+        }
+      }
+      .filtering-submit {
+        width: 100%;
+        margin-top: 10px;
+        padding: 5px;
+        border-radius: 5px;
+        background-color: $commonBlack;
+        color: $commonWhite;
+      }
+    }
+  }
+}
