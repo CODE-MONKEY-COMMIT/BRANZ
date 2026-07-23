@@ -1,285 +1,626 @@
-const visualswiper = new Swiper('.detail-visual', {
-  loop: true,
-  navigation: {
-    nextEl: '.detail-visual__button--next',
-    prevEl: '.detail-visual__button--prev',
-  },
-});
-
-const colorSelect = document.querySelector('#color-select');
-const sizeSelect = document.querySelector('#size-select');
-const optionList = document.querySelector('.detail-options__list');
-const defaultPrice = document.querySelector('.detail-info__price');
-const defaultPriceNum = Number(defaultPrice.textContent.replace(/[^0-9]/g, ''));
-const totalPrice = document.querySelector('.payment__price');
-
-function updateTotalPrice() {
-  const items = document.querySelectorAll('.detail-options__item');
-  let sum = 0;
-  items.forEach((item) => {
-    const quantity = Number(item.querySelector('.detail-options__input').value);
-    const optionPriceBox = item.querySelector('.detail-options__price span');
-    let optionPrice = defaultPriceNum * quantity;
-    optionPriceBox.textContent = '';
-    optionPriceBox.textContent = optionPrice.toLocaleString();
-    sum += optionPrice;
-  });
-  totalPrice.textContent = sum.toLocaleString();
-}
-
-function addOption() {
-  const color = colorSelect.value;
-  const size = sizeSelect.value;
-  const key = `${color} / ${size}`;
-
-  if (!color || !size) return;
-
-  const existing = optionList.querySelector(`[data-option="${key}"]`);
-  if (existing) {
-    const input = existing.querySelector('.detail-options__input');
-    input.value = Number(input.value) + 1;
-    updateTotalPrice();
-    resetSelects();
-    return;
-  }
-
-  const li = document.createElement('li');
-  li.className = 'detail-options__item';
-  li.dataset.option = key;
-  li.innerHTML = `
-      <div class="detail-options__name">${key}</div>
-      <div class="detail-options__inputs">
-        <button type="button" class="detail-options__button" data-type="minus">-</button>
-        <input type="text" class="detail-options__input" value="1" readonly />
-        <button type="button" class="detail-options__button" data-type="plus">+</button>
-      </div>
-      <div class="detail-options__price"><span>${defaultPrice.textContent}</span>원</div>
-      <button type="button" class="detail-options__delete" aria-label="옵션 삭제">X</button>
-    `;
-  optionList.appendChild(li);
-  updateTotalPrice();
-  resetSelects();
-}
-
-function resetSelects() {
-  colorSelect.value = '';
-  sizeSelect.value = '';
-}
-
-colorSelect.addEventListener('change', addOption);
-sizeSelect.addEventListener('change', addOption);
-
-optionList.addEventListener('click', (e) => {
-  const item = e.target.closest('.detail-options__item');
-  if (!item) return;
-
-  const deleteButton = e.target.closest('.detail-options__delete');
-  if (deleteButton) {
-    item.remove();
-    updateTotalPrice();
-    return;
-  }
-
-  const btn = e.target.closest('.detail-options__button');
-  if (!btn) return;
-  const quantityInput = item.querySelector('.detail-options__input');
-  let quantityValue = Number(quantityInput.value);
-  if (btn.dataset.type === 'minus' && quantityValue > 1) {
-    quantityValue--;
-  } else if (btn.dataset.type === 'plus') {
-    quantityValue++;
-  }
-  quantityInput.value = quantityValue;
-  updateTotalPrice();
-});
-
-const inquiryList = document.querySelector(
-  '.detail-inquiry .detail-board__list',
-);
-inquiryList.addEventListener('click', (e) => {
-  e.preventDefault();
-  const item = e.target.closest('.detail-board__item');
-  if (item) {
-    const textBox = item.querySelector('.detail-board__textbox');
-    textBox.classList.toggle('active');
-  }
-});
-
-const frequentList = document.querySelector('.detail-frequent__list');
-frequentList.addEventListener('click', (e) => {
-  e.preventDefault();
-  const item = e.target.closest('.detail-frequent__item');
-  if (item) {
-    item.classList.toggle('active');
-  }
-});
-
-const detailTabItems = document.querySelectorAll('.detail-tab__item');
-const detailContent = document.querySelector('.detail-content');
-function tabclassUpdate(item) {
-  detailTabItems.forEach((tab) => {
-    tab.classList.remove('active');
-  });
-  item.classList.add('active');
-}
-function getTargetTop(target) {
-  return target.getBoundingClientRect().top + window.scrollY;
-}
-detailTabItems.forEach((item, index) => {
-  item.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    // tabclassUpdate(item);
-    const windowWidth = window.innerWidth;
-    let tabHeight = 80;
-    if (windowWidth <= 1000) {
-      tabHeight = 150;
-    }
-    const targetData = item.dataset.target;
-    const target = detailContent.querySelector(targetData);
-    const targetTop = getTargetTop(target);
-    window.scrollTo({
-      top: targetTop - tabHeight,
-      behavior: 'smooth',
-    });
-  });
-});
-window.addEventListener('scroll', () => {
-  const currentScroll = window.scrollY;
-  detailTabItems.forEach((item, i) => {
-    const targetData = item.dataset.target;
-    const target = detailContent.querySelector(targetData);
-
-    if (!target) return;
-    const targetTop = getTargetTop(target);
-    const nextItem = detailTabItems[i + 1];
-    if (nextItem) {
-      const nextData = nextItem.dataset.target;
-      const nextTarget = detailContent.querySelector(nextData);
-      const nextItemTop = getTargetTop(nextTarget);
-
-      if (nextItemTop > currentScroll && currentScroll >= targetTop - 200) {
-        tabclassUpdate(item);
-      }
-    } else {
-      if (currentScroll >= targetTop - 200) {
-        tabclassUpdate(item);
-      }
-    }
-  });
-});
-
-const reviews = [
-  {
-    nickname: '쥐돌이',
-    stars: 4,
-    img: ['review01.png', 'review02.png'],
-    text: '아주 좋습니다 굿입니다 굿굿🐭',
-    date: '2026-08-24',
-  },
-  {
-    nickname: '바이럴알바생',
-    stars: 5,
-    img: [],
-    text: '처음엔 정말 많이 고민했어요. 이 제품 괜찮을까? 믿고 입을 수 있을까... 그런데 밑져야 본전이라고 눈 딱 감고 구매했는데, 그 이후로 이틀째 눈이 잘 안떠지네요. 지금 이 리뷰도 음성인식으 로 하고 있습니다.',
-    date: '2026-08-23',
-  },
-  {
-    nickname: '헤롱이',
-    stars: 1,
-    img: ['review03.png'],
-    text: '정말 좋아요 노란색... 굿(good)이네요. 무료 나눔 아니어서 별점 깎았어요.',
-    date: '2026-08-22',
-  },
-];
-
-const reviewList = document.querySelector('.detail-board__list');
-function reviewUpdate() {
-  reviewList.innerHTML = '';
-  reviews.forEach((item, index) => {
-    const maxStars = 5;
-    const filledStar = item.stars;
-    const emptyStar = maxStars - filledStar;
-    const writeStars = '★'.repeat(filledStar) + '☆'.repeat(emptyStar);
-    let imageHTML = '';
-    if (item.img && item.img.length > 0) {
-      imageHTML = `<div class="detail-board__image"><img src="../images/contents/detail_product/${item.img[0]}" alt="리뷰사진" />${item.img.length > 1 ? `<span class="img-count">＋${item.img.length - 1}</span>` : ''}</div>`;
-    }
-    // if (item.img && item.img.length > 0) {
-    //   imageHTML = `<div class="detail-board__image">`;
-    //   item.img.forEach((src) => {
-    //     imageHTML += `<img src="../images/contents/detail_product/${src}" alt="리뷰사진"/>`;
-    //   });
-    //   imageHTML += `</div>`;
-    // }
-
-    const reviewItem = document.createElement('li');
-    reviewItem.className = 'detail-board__item';
-    reviewItem.dataset.index = `${index}`;
-    reviewItem.innerHTML = `<div class="review-star">${writeStars}</div>
-                          <p class="detail-board__nickname">${item.nickname}</p>
-                          <p class="detail-board__text">${item.text}</p>
-                          ${imageHTML}
-                          <span class="detail-board__date">${item.date}</span>`;
-    reviewList.appendChild(reviewItem);
-  });
-}
-reviewUpdate();
-
-const reviewModal = document.querySelector('#reviewModal');
-const reviewModalImg = reviewModal.querySelector('#modalImg');
-const modalPrevBtn = reviewModal.querySelector('.prev-btn');
-const modalNextBtn = reviewModal.querySelector('.next-btn');
-
-let currentImgArray = [];
-let currentImgIndex = 0;
-
-reviewList.addEventListener('click', (e) => {
-  const currentItem = e.target.closest('.detail-board__item');
-  const currentImage = e.target.closest('.detail-board__image');
-  const currentReviewIndex = currentItem.dataset.index;
-  const currentReview = reviews[currentReviewIndex];
-
-  currentImgArray = Array.from(currentReview.img);
-  currentImgIndex = 0;
-  if (currentImage) {
-    reviewModal.style.display = 'block';
-    reviewModalImg.src = `../images/contents/detail_product/${currentImgArray[0]}`;
-  }
-  if (currentImgArray.length <= 1) {
-    modalPrevBtn.style.display = 'none';
-    modalNextBtn.style.display = 'none';
-  } else {
-    updateButtonVisibility();
-  }
-});
-reviewModal.addEventListener('click', (e) => {
-  const currentPrev = e.target.closest('.prev-btn');
-  const currentNext = e.target.closest('.next-btn');
-  const reviewModalClose = e.target.closest('.review-modal__close');
-
-  if (currentPrev && currentImgIndex > 0) {
-    currentImgIndex--;
-    updateButtonVisibility();
-  } else if (currentNext && currentImgIndex < currentImgArray.length - 1) {
-    currentImgIndex++;
-    updateButtonVisibility();
-  }
-  reviewModalImg.src = `../images/contents/detail_product/${currentImgArray[currentImgIndex]}`;
-
-  if (reviewModalClose || e.target === reviewModal) {
-    reviewModal.style.display = 'none';
-  }
-});
-function updateButtonVisibility() {
-  if (currentImgIndex === 0) {
-    modalPrevBtn.style.display = 'none';
-    modalNextBtn.style.display = 'block';
-  } else if (currentImgIndex === currentImgArray.length - 1) {
-    modalPrevBtn.style.display = 'block';
-    modalNextBtn.style.display = 'none';
-  } else {
-    modalPrevBtn.style.display = 'block';
-    modalNextBtn.style.display = 'block';
-  }
-}
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BRNAZ | 21 Square Logo Top - 썸웨어버터</title>
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="../CSS/reset.css" />
+    <link rel="stylesheet" href="../CSS/common.css" />
+    <link rel="stylesheet" href="../CSS/sub.css" />
+    <link rel="stylesheet" href="../CSS/content.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header id="header">
+        <div class="header__mobile">
+          <h1 class="header__logo">
+            <a href="../index.html"
+              ><img
+                src="../Images/main/main_logo.png"
+                alt="브랜즈 로고"
+                class="main_logo"
+            /></a>
+          </h1>
+          <button class="gnb__button">
+            <img src="../Images/main/menu.png" alt="메뉴열기" />
+          </button>
+        </div>
+        <div class="header__inner header__pc">
+          <!-- <video
+            src="./videos/depth_background.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+            class="depth2__bg-video"
+          ></video> -->
+          <h1 class="header__logo">
+            <a href="../index.html"
+              ><img
+                src="../Images/main/main_logo.png"
+                alt="브랜즈 로고"
+                class="main_logo"
+            /></a>
+          </h1>
+          <div class="header-utility">
+            <ul class="header-utility__list">
+              <li class="header-utility__item">
+                <a href="#" aria-label="마이페이지"
+                  ><i class="fa-solid fa-user"></i
+                ></a>
+              </li>
+              <li class="header-utility__item">
+                <a href="#" aria-label="찜한 상품"
+                  ><i class="fa-solid fa-heart"></i
+                ></a>
+              </li>
+              <li class="header-utility__item">
+                <a href="#" aria-label="장바구니"
+                  ><i class="fa-solid fa-cart-shopping"></i
+                ></a>
+              </li>
+              <li class="header-utility__item">
+                <a href="#" aria-label="로그인"
+                  ><i class="fa-solid fa-right-to-bracket"></i
+                ></a>
+              </li>
+              <li class="header-utility__item header-utility__item--search">
+                <button aria-label="검색">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <form class="header-utility__search">
+                  <label for="search-box" aria-label="검색어 입력창"></label>
+                  <input
+                    type="text"
+                    id="search-box"
+                    placeholder="검색어를 입력하세요"
+                  />
+                  <input type="submit" value="검색" />
+                </form>
+              </li>
+            </ul>
+          </div>
+          <nav class="gnb depth1">
+            <ul class="depth1__list">
+              <li class="depth1__item">
+                <a href="#" class="depth1__link">BEST</a>
+              </li>
+              <li class="depth1__item" data-menu="women">
+                <a href="#" class="depth1__link">WOMEN</a>
+              </li>
+              <li class="depth1__item" data-menu="men">
+                <a href="#" class="depth1__link">MEN</a>
+              </li>
+              <li class="depth1__item" data-menu="interior">
+                <a href="#" class="depth1__link">INTERIOR</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="header__banner">
+            <div></div>
+          </div>
+        </div>
+      </header>
+      <main id="main">
+        <div class="main__wrap">
+          <!-- 메인 기본 페이지 -->
+          <section class="main-default" id="main-default">
+            <div class="contents">
+              <div class="contents__wrap">
+                <div class="detail">
+                  <div class="detail__top">
+                    <div class="detail-visual swiper">
+                      <div class="detail-visual__list swiper-wrapper">
+                        <div class="detail-visual__item swiper-slide">
+                          <img
+                            src="../Images/contents/product01.png"
+                            alt="상품 썸네일 이미지 01"
+                          />
+                        </div>
+                        <div class="detail-visual__item swiper-slide">
+                          <img
+                            src="../Images/contents/product12.png"
+                            alt="상품 썸네일 이미지 02"
+                          />
+                        </div>
+                        <div class="detail-visual__item swiper-slide">
+                          <img
+                            src="../Images/contents/product13.png"
+                            alt="상품 썸네일 이미지 03"
+                          />
+                        </div>
+                      </div>
+                      <div class="detail-visual__buttons">
+                        <button
+                          class="detail-visual__button detail-visual__button--prev"
+                          aria-label="이전 보기"
+                        >
+                          <i class="fa-solid fa-angle-left"></i>
+                        </button>
+                        <button
+                          class="detail-visual__button detail-visual__button--next"
+                          aria-label="다음 보기"
+                        >
+                          <i class="fa-solid fa-angle-right"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="detail-info">
+                      <div class="detail-info__top">
+                        <div class="detail-info__header">
+                          <a href="#" class="detail-info__brand">썸웨어버터</a>
+                          <h1 class="detail-info__title">21 Square Logo Top</h1>
+                          <div class="detail-info__price-box">
+                            <span class="detail-info__discount">29%</span>
+                            <span class="detail-info__price">27,690원</span>
+                          </div>
+                        </div>
+                        <div class="detail-options">
+                          <div class="detail-options__row">
+                            <label for="color-select">COLOR</label>
+                            <div class="detail-options__select">
+                              <select id="color-select">
+                                <option value="">색상을 선택하세요</option>
+                                <option value="yellow">Yellow</option>
+                                <option value="white">White</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="detail-options__row">
+                            <label for="size-select">SIZE</label>
+                            <div class="detail-options__select">
+                              <select id="size-select">
+                                <option value="">사이즈를 선택하세요</option>
+                                <option value="S">S (90)</option>
+                                <option value="M">M (95)</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="detail-info__middle">
+                        <ul class="detail-options__list"></ul>
+                      </div>
+                      <div class="detail-info__bottom">
+                        <div class="payment">
+                          <span class="payment__label">총 상품 금액</span>
+                          <span
+                            ><strong class="payment__price">27,690</strong
+                            >원</span
+                          >
+                        </div>
+                        <div class="payment__buttons">
+                          <button
+                            type="button"
+                            class="payment__button payment__button--cart"
+                          >
+                            장바구니
+                          </button>
+                          <button
+                            type="button"
+                            class="payment__button payment__button--now"
+                          >
+                            바로 구매하기
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="detail__bottom">
+                    <div class="detail-tab">
+                      <ul class="detail-tab__list">
+                        <li
+                          class="detail-tab__item active"
+                          data-target=".detail-product"
+                        >
+                          상품 소개
+                        </li>
+                        <li
+                          class="detail-tab__item"
+                          data-target=".detail-review"
+                        >
+                          리뷰
+                        </li>
+                        <li
+                          class="detail-tab__item"
+                          data-target=".detail-inquiry"
+                        >
+                          Q&A
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="detail-content">
+                      <div class="detail-product">
+                        <h3 class="detail-product__title">상품 상세 정보</h3>
+                        <div class="detail-product__info">
+                          <ul class="detail-product__spec">
+                            <li class="detail-product__spec-item">
+                              <span class="detail-product__spec-title"
+                                >성별</span
+                              >
+                              <span class="detail-product__spec-text">여</span>
+                            </li>
+                            <li class="detail-product__spec-item">
+                              <span class="detail-product__spec-title"
+                                >시즌</span
+                              >
+                              <span class="detail-product__spec-text"
+                                >여름</span
+                              >
+                            </li>
+                          </ul>
+                          <div class="detail-product__images">
+                            <img
+                              src="../Images/contents/detail_product/01.jpg"
+                              alt="제품 상세 이미지"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="detail-review board_template">
+                        <h3 class="detail-product__title">리뷰</h3>
+                        <ul class="detail-board__list"></ul>
+                        <div class="detail-pagination">
+                          <ol class="detail-pagination__list">
+                            <li
+                              class="detail-pagination__item arrow-btn"
+                              aria-label="이전보기"
+                            >
+                              <button class="detail-pagination__link">
+                                <i class="fa-solid fa-angles-left"></i>
+                              </button>
+                            </li>
+                            <li class="detail-pagination__item active">
+                              <a href="#" class="detail-pagination__link">1</a>
+                            </li>
+                            <li class="detail-pagination__item">
+                              <a href="#" class="detail-pagination__link">2</a>
+                            </li>
+                            <li class="detail-pagination__item">
+                              <a href="#" class="detail-pagination__link">3</a>
+                            </li>
+                            <li
+                              class="detail-pagination__item arrow-btn"
+                              aria-label="다음보기"
+                            >
+                              <button class="detail-pagination__link">
+                                <i class="fa-solid fa-angles-right"></i>
+                              </button>
+                            </li>
+                          </ol>
+                        </div>
+                      </div>
+                      <div class="detail-inquiry board_template">
+                        <h3 class="detail-product__title">Q&A</h3>
+                        <ul class="detail-board__list">
+                          <li class="detail-board__item">
+                            <a href="#" class="detail-board__link">
+                              <div class="detail-board__title">
+                                <span class="answer-status none">미답변</span
+                                >반품 문의
+                              </div>
+                              <div class="detail-board__textbox">
+                                <div class="detail-board__customer">
+                                  <p class="detail-board__nickname">헤롱이</p>
+                                  <p class="detail-board__text">반품합니다.</p>
+                                  <span class="detail-board__date"
+                                    >2026-08-24</span
+                                  >
+                                </div>
+                              </div>
+                            </a>
+                          </li>
+                          <li class="detail-board__item">
+                            <a href="#" class="detail-board__link">
+                              <div class="detail-board__title">
+                                <span class="answer-status complete"
+                                  >답변 완료</span
+                                >무료 기부 문의
+                              </div>
+                              <div class="detail-board__textbox">
+                                <div class="detail-board__customer">
+                                  <p class="detail-board__nickname">헤롱이</p>
+                                  <p class="detail-board__text">
+                                    옷 좀 무료로 나눔 받을 수 있을가여
+                                  </p>
+                                  <span class="detail-board__date"
+                                    >2026-08-17</span
+                                  >
+                                </div>
+                                <div class="detail-board__seller">
+                                  <span class="detail-board__nickname"
+                                    >판매자</span
+                                  >
+                                  <p class="detail-board__text">
+                                    고객님, 죄송하지만 어려울 것 같습니다.
+                                  </p>
+                                  <span class="detail-board__date"
+                                    >2026-08-18</span
+                                  >
+                                </div>
+                              </div>
+                            </a>
+                          </li>
+                        </ul>
+                        <div class="detail-pagination">
+                          <ol class="detail-pagination__list">
+                            <li
+                              class="detail-pagination__item arrow-btn"
+                              aria-label="이전보기"
+                            >
+                              <button class="detail-pagination__link">
+                                <i class="fa-solid fa-angles-left"></i>
+                              </button>
+                            </li>
+                            <li class="detail-pagination__item active">
+                              <a href="#" class="detail-pagination__link">1</a>
+                            </li>
+                            <li class="detail-pagination__item">
+                              <a href="#" class="detail-pagination__link">2</a>
+                            </li>
+                            <li class="detail-pagination__item">
+                              <a href="#" class="detail-pagination__link">3</a>
+                            </li>
+                            <li
+                              class="detail-pagination__item arrow-btn"
+                              aria-label="다음보기"
+                            >
+                              <button class="detail-pagination__link">
+                                <i class="fa-solid fa-angles-right"></i>
+                              </button>
+                            </li>
+                          </ol>
+                        </div>
+                      </div>
+                      <div class="detail-frequent">
+                        <ul class="detail-frequent__list">
+                          <li class="detail-frequent__item">
+                            <div class="detail-frequent__title">배송 안내</div>
+                            <div class="detail-frequent__text">
+                              주문을 받은 후 배송됩니다. 주문 전에는 배송되지
+                              않으니 참고 부탁드립니다.
+                              <br />예상 도착 시간 00:00~24:00
+                            </div>
+                          </li>
+                          <li class="detail-frequent__item">
+                            <div class="detail-frequent__title">
+                              교환 및 반품 안내
+                            </div>
+                            <div class="detail-frequent__text">
+                              교환이나 반품을 원하실 경우 교환이나 반품이
+                              진행됩니다.
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer id="footer">
+              <div class="footer__inner">
+                <img
+                  src="../Images/main/footer_logo.png"
+                  alt="브랜즈 로고"
+                  class="footer__logo"
+                />
+                <div class="footer__content">
+                  <p class="footer__address">
+                    (06579) 서울특별시 잘하구 잘하기로 777(카츠동)<br />
+                    대표전화 02-1004-1004 (운영시간: 09:00~18:00, 공휴일 제외)
+                  </p>
+                  <div class="footer__link">
+                    <a href="#">개인정보처리방침</a>
+                    <a href="#">저작권정책</a>
+                  </div>
+                </div>
+              </div>
+            </footer>
+          </section>
+          <!-- 2차 메뉴 -->
+          <section class="main-category" id="main-category">
+            <div class="depth2" data-menu="women">
+              <ul class="depth2__list">
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/woman01.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">의류</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/woman02.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">가방</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/woman03.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">신발</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/woman04.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">액세서리</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/woman05.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">주얼리</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <button class="depth2__link depth2__close" aria-label="닫기">
+                    <span class="depth2__close--icon">X</span>
+                    <span class="depth2__close--text">close</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="depth2" data-menu="men">
+              <ul class="depth2__list">
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/man01.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">의류</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/man02.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">가방</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/man03.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">신발</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/man04.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">액세서리</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/man05.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">주얼리</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <button class="depth2__link depth2__close" aria-label="닫기">
+                    <span class="depth2__close--icon">X</span>
+                    <span class="depth2__close--text">close</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <div class="depth2" data-menu="interior">
+              <ul class="depth2__list">
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/interior01.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">해외브랜드</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/interior02.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">침구</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/interior03.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">홈패브릭</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/interior04.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">가구</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/interior05.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">조명</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/interior06.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">홈데코</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <a href="./sub.html" class="depth2__link">
+                    <div class="depth2__image">
+                      <img src="../Images/main/interior07.webp" alt="" />
+                    </div>
+                    <div class="depth2__text">스테이셔너리</div></a
+                  >
+                </li>
+                <li class="depth2__item">
+                  <button class="depth2__link depth2__close" aria-label="닫기">
+                    <span class="depth2__close--icon">X</span>
+                    <span class="depth2__close--text">close</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <div class="review-modal" id="reviewModal">
+      <button type="button" class="modal-btn prev-btn" aria-label="이전보기">
+        ‹
+      </button>
+      <img
+        class="review-modal__content"
+        id="modalImg"
+        src=""
+        alt="리뷰 이미지"
+      />
+      <button type="button" class="modal-btn next-btn" aria-label="다음보기">
+        ›
+      </button>
+      <button class="review-modal__close" aria-label="창 닫기">X</button>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+  <script src="../JS/common.js"></script>
+  <script src="../JS/contents.js"></script>
+</html>
