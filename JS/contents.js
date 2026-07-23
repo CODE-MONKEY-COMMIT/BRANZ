@@ -208,7 +208,7 @@ function reviewUpdate() {
     // if (item.img && item.img.length > 0) {
     //   imageHTML = `<div class="detail-board__image">`;
     //   item.img.forEach((src) => {
-    //     imageHTML += `<img src="../images/contents/detail_product/${src}" alt="리뷰사진"/>`;
+    //     imageHTML += `<img src="../Images/contents/detail_product/${src}" alt="리뷰사진"/>`;
     //   });
     //   imageHTML += `</div>`;
     // }
@@ -244,7 +244,7 @@ reviewList.addEventListener('click', (e) => {
   currentImgIndex = 0;
   if (currentImage) {
     reviewModal.style.display = 'block';
-    reviewModalImg.src = `../images/contents/detail_product/${currentImgArray[0]}`;
+    reviewModalImg.src = `../Images/contents/detail_product/${currentImgArray[0]}`;
   }
   if (currentImgArray.length <= 1) {
     modalPrevBtn.style.display = 'none';
@@ -265,7 +265,7 @@ reviewModal.addEventListener('click', (e) => {
     currentImgIndex++;
     updateButtonVisibility();
   }
-  reviewModalImg.src = `../images/contents/detail_product/${currentImgArray[currentImgIndex]}`;
+  reviewModalImg.src = `../Images/contents/detail_product/${currentImgArray[currentImgIndex]}`;
 
   if (reviewModalClose || e.target === reviewModal) {
     reviewModal.style.display = 'none';
